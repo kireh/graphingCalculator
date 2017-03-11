@@ -50,10 +50,7 @@ The BackEnd Team
 +The Graphable interface will be used by anything that can be displayed in the GraphPanel. This includes Functions as well as StatPlots, and other statistical models.
 +The Statistic interface will be used by anything that uses a list or multiple lists to perform statistical analysis. For this iteration of the project, we are aiming to have single and double variable statistics. If you're interested, this could later move on to regression, but that's quite complicated for this.
 
-The Git repository, once you have your IDE set up to use it, is located at: https://github.com/kireh/graphingCalculator
-SET YOUR INITIAL BRANCH TO THE DOWNLOAD BRANCH
-
 Once you've cloned the repository, please let me know so that I can add you to the list of collaborators and get started with the branch theory material.
 
-Thanks everyone, and enjoy your break,
+Thanks everyone,
 Kireh W
