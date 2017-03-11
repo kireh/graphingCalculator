@@ -1,6 +1,9 @@
-public class Function
+import java.awt.Color;
+
+public abstract class Function extends Graphable
 {
-	 public static void main(String[] args){
-		System.out.println("hello world");
+	public void plot(Color c)
+	{
+		//plot graph points using x and y coordinate lists;
 	}
 }
