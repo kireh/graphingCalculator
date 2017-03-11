@@ -1,3 +1,5 @@
+package graphingCalculator;
+
 import javax.swing.JPanel;
 
 /**

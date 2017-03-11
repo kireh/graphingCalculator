@@ -1,3 +1,5 @@
+package graphingCalculator;
+
 import java.awt.Color;
 
 class Linear extends Function

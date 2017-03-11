@@ -1,3 +1,5 @@
+package graphingCalculator;
+
 /**
  * This class will behave as the scratchpad for normal 
  * calculation that does not require a graphical display.
