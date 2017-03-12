@@ -32,6 +32,5 @@ public class SelectionPane extends JPanel
 		show.addTab("Stat Plots", stat);
 		show.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 		this.add(show);
-		
 	}
 }
