@@ -1,5 +1,8 @@
 package graphingCalculator;
 
+import java.awt.BorderLayout;
+import java.awt.MenuBar;
+
 import javax.swing.JFrame;
 
 /**
@@ -16,6 +19,14 @@ public class GraphWindow extends JFrame
 	 */
 	public GraphWindow()
 	{
+		super("GraphWindow");
+		this.setLayout(new BorderLayout(5,5));
+		MenuBar mb = new MenuBar();
+		this.setMenuBar(mb);
+		this.add(new GraphPanel(), BorderLayout.CENTER);
+		this.add(new SelectionPane(), BorderLayout.WEST);
+		this.add(new ButtonPanel(), BorderLayout.SOUTH);
+		this.add(new TablePanel(), BorderLayout.EAST);
 		
 	}
 	
@@ -25,7 +36,10 @@ public class GraphWindow extends JFrame
 	 */
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		GraphWindow g = new GraphWindow();
+		g.pack();
+		g.setVisible(true);
+		g.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
