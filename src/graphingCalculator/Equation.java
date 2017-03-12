@@ -1,5 +1,7 @@
 package graphingCalculator;
 
+import java.awt.Dimension;
+
 import javax.swing.JCheckBox;
 
 public class Equation extends JCheckBox
@@ -15,5 +17,6 @@ public class Equation extends JCheckBox
 	public Equation(String title)
 	{
 		super(title);
+		this.setPreferredSize(new Dimension(100, 200));
 	}
 }

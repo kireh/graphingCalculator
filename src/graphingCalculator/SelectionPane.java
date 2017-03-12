@@ -21,7 +21,7 @@ public class SelectionPane extends JPanel
 	public SelectionPane()
 	{
 		super(new GridLayout(1,1));
-		Dimension size = new Dimension(200,200);
+		Dimension size = new Dimension(150,200);
 		this.setPreferredSize(size);
 		JTabbedPane show = new JTabbedPane();
 		JComponent func = new EquationPane();

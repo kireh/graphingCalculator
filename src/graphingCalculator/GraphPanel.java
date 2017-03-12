@@ -1,6 +1,10 @@
 package graphingCalculator;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  * This class will hold all data and methods for the central GraphPanel 
@@ -15,7 +19,8 @@ public class GraphPanel extends JPanel
 	 */
 	public GraphPanel()
 	{
-		
+		super();
+		this.setBorder(new LineBorder(Color.BLACK));
 		
 	}
 

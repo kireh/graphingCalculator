@@ -1,6 +1,10 @@
 package graphingCalculator;
 
+import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  * This class will hold and control the TablePanel, which is responsible for 
@@ -15,6 +19,8 @@ public class TablePanel extends JPanel
 	 */
 	public TablePanel()
 	{
-		
+		super();
+		this.setPreferredSize(new Dimension(200, 200));
+		this.setBorder(new LineBorder(Color.BLACK));
 	}
 }

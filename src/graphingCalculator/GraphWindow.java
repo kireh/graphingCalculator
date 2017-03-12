@@ -1,6 +1,7 @@
 package graphingCalculator;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.MenuBar;
 
 import javax.swing.JFrame;
@@ -20,6 +21,8 @@ public class GraphWindow extends JFrame
 	public GraphWindow()
 	{
 		super("GraphWindow");
+		Dimension minSize = new Dimension(900,900);
+		this.setMinimumSize(minSize);
 		this.setLayout(new BorderLayout(5,5));
 		MenuBar mb = new MenuBar();
 		this.setMenuBar(mb);

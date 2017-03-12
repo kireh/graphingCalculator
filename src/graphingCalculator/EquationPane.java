@@ -1,4 +1,6 @@
 package graphingCalculator;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JCheckBox;
@@ -10,17 +12,20 @@ public class EquationPane extends JComponent
 	public EquationPane()
 	{
 		super();
+		this.setPreferredSize(new Dimension(300, 300));
 		this.setLayout(new GridLayout(11, 1));
-		JCheckBox y1 = new JCheckBox("y01");
-		JCheckBox y2 = new JCheckBox("y02");
-		JCheckBox y3 = new JCheckBox("y03");
-		JCheckBox y4 = new JCheckBox("y04");
-		JCheckBox y5 = new JCheckBox("y05");
-		JCheckBox y6 = new JCheckBox("y06");
-		JCheckBox y7 = new JCheckBox("y07");
-		JCheckBox y8 = new JCheckBox("y08");
-		JCheckBox y9 = new JCheckBox("y09");
-		JCheckBox y10 = new JCheckBox("y10");
+		this.setBackground(Color.RED);
+		this.setOpaque(true);
+		Equation y1 = new Equation("y01");
+		Equation y2 = new Equation("y02");
+		Equation y3 = new Equation("y03");
+		Equation y4 = new Equation("y04");
+		Equation y5 = new Equation("y05");
+		Equation y6 = new Equation("y06");
+		Equation y7 = new Equation("y07");
+		Equation y8 = new Equation("y08");
+		Equation y9 = new Equation("y09");
+		Equation y10 = new Equation("y10");
 		this.add(y1);
 		this.add(y2);
 		this.add(y3);
