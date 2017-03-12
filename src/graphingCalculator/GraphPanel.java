@@ -15,14 +15,14 @@ import javax.swing.border.LineBorder;
  */
 public class GraphPanel extends JPanel 
 {
-	double xMin =-300;
-	double xMax =100;
-	double yMin= -30;
-	double yMax= 700;
+	double xMin =-1000;
+	double xMax =10;
+	double yMin= -20;
+	double yMax= 20;
 	double dx = xMax-xMin;
 	double dy = yMax-yMin;
-	int w = 500;
-	int h = this.getHeight();
+	int w;
+	int h;
 	double xScl = dx/w;//x per pixel
 	double yScl = dy/w;//y per pixel
 	
@@ -32,7 +32,7 @@ public class GraphPanel extends JPanel
 	 */
 	public GraphPanel()
 	{
-		this(-300,300,-30,700);
+		this(-10,10,-10,10);
 	}
 	
 	/**
@@ -60,9 +60,9 @@ public class GraphPanel extends JPanel
 	{
 		 Graphics2D gr = (Graphics2D)g;
 		 gr.translate(yAxis(), xAxis());//IMPORTANT: transforms the panel into a 4-quadrant Cartesian coordinate plane
-		 gr.scale(xScl, yScl);//scale the Graphics to x and y per pixel
-		 gr.drawLine(-w, 0, w, 0);
-		 gr.drawLine(0, -h, 0, h);
+		 //gr.scale(xScl, yScl);//scale the Graphics to x and y per pixel
+		 gr.drawLine(-w, 0, w, 0);//x-axis
+		 gr.drawLine(0, -h, 0, h);//y-axis
 	}
 	
 	public void windowSet(double xMini, double xMaxi, double yMini, double yMaxi)
@@ -82,20 +82,24 @@ public class GraphPanel extends JPanel
 	
 	/**
 	 * Calculates the pixel representation at which y=0
-	 * @return
+	 * @return origin y-coordinate pixel as an int
 	 */
 	public int xAxis()
 	{
 		h = this.getHeight();
-		double top = yMax/dy -.5;
+		double top = (yMax/dy);
 		double bottom = Math.abs(yMin/dy);
 		return (int)(top * h);	
 	}
 	
+	/**
+	 * Calculates the pixel representation at which x=0
+	 * @return origin x-coordinate pixel as an int 
+	 */
 	public int yAxis()
 	{
 		w = this.getWidth();
-		double right = xMax/dx;
+		double right = (1-(xMax/dx));//calculates the proportion of view to the right of y-axis
 		double left = Math.abs(xMin/dx);
 		System.out.println("w: " +w);
 		System.out.println("0: " +(int)(right * w));
