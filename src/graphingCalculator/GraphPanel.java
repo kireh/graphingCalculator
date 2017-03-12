@@ -49,12 +49,15 @@ public class GraphPanel extends JPanel
 		//this.repaint();
 	}
 
+	/**
+	 * 
+	 */
 	public void paintComponent(Graphics g) 
 	{
 		 Graphics2D gr = (Graphics2D)g;
 		 //System.out.println("X" +xMax);
 		 //g.setColor(this.c);
-		 g.translate(this.getWidth()/2, this.getHeight()/2);
+		 gr.translate(this.getWidth()/2, this.getHeight()/2);
 		 gr.drawLine(0, 0-this.getHeight()/2, 0, this.getHeight()/2);//y-axis
 		 gr.drawLine(0-this.getWidth()/2, 0, this.getWidth()/2, 0);//x-axis
 		 //g.drawLine(this.getWidth(),0, 0, this.getHeight());//upleft
