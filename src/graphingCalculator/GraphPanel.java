@@ -15,12 +15,16 @@ import javax.swing.border.LineBorder;
  */
 public class GraphPanel extends JPanel 
 {
-	double xMin = -70;
-	double xMax = 5;
-	double yMin= -5;
-	double yMax=10;
-	double dx = 20;
-	double dy = 20;
+	double xMin =-300;
+	double xMax =100;
+	double yMin= -30;
+	double yMax= 700;
+	double dx = xMax-xMin;
+	double dy = yMax-yMin;
+	int w = 500;
+	int h = this.getHeight();
+	double xScl = dx/w;//x per pixel
+	double yScl = dy/w;//y per pixel
 	
 	/**
 	 * Creates a new GraphPanel with default windowset, draws the axes, scales the axes, and 
@@ -28,7 +32,7 @@ public class GraphPanel extends JPanel
 	 */
 	public GraphPanel()
 	{
-		this(-70,-10,90,10);
+		this(-300,300,-30,700);
 	}
 	
 	/**
@@ -43,8 +47,10 @@ public class GraphPanel extends JPanel
 	public GraphPanel(double xMini, double xMaxi, double yMini, double yMaxi)
 	{
 		super();
+		w = this.getWidth();
 		this.windowSet(xMini, xMaxi, yMini, yMaxi);
 		this.setBorder(new LineBorder(Color.BLACK));
+		
 	}
 
 	/**
@@ -53,9 +59,10 @@ public class GraphPanel extends JPanel
 	public void paint(Graphics g) 
 	{
 		 Graphics2D gr = (Graphics2D)g;
-		 gr.translate(this.getWidth()/2, this.getHeight()/2);//IMPORTANT: transforms the panel into a 4-quadrant Cartesian coordinate plane
-		 gr.drawLine(this.findYAxis(), (0-this.getHeight()/2)/*top of graph*/, this.findYAxis(), (this.getHeight()/2)/*bottom of graph*/);//y-axis
-		 gr.drawLine((0-this.getWidth()/2)/*left of graph*/, this.findXAxis(), (this.getWidth()/2)/*right of graph*/, this.findXAxis());//x-axis
+		 gr.translate(yAxis(), xAxis());//IMPORTANT: transforms the panel into a 4-quadrant Cartesian coordinate plane
+		 gr.scale(xScl, yScl);//scale the Graphics to x and y per pixel
+		 gr.drawLine(-w, 0, w, 0);
+		 gr.drawLine(0, -h, 0, h);
 	}
 	
 	public void windowSet(double xMini, double xMaxi, double yMini, double yMaxi)
@@ -74,51 +81,26 @@ public class GraphPanel extends JPanel
 	}
 	
 	/**
-	 * Calculates the pixel value representation of where the x-axis(y=0) should be drawn on a scaled graph
-	 * Keep in mind that the pixels have been shifted so that the origin is a the midpoint of both height and width
-	 * @return the pixel value of the x-axis as an int
+	 * Calculates the pixel representation at which y=0
+	 * @return
 	 */
-	public int findXAxis()
+	public int xAxis()
 	{
-		double ans;
-		double dy = yMax-yMin; //delta-y
-		double scl = this.getHeight()/(yMax-yMin);// total pixels per y
-		double bottom = (yMin)/dy;//calculates the portion of the screen that is above the y-axis
-		//if the x-axis is not included in the window, the function will return -1 
-		if (yMin>0 || yMax<0)
-		{
-			ans=-1;
-		}
-		else
-		{
-			ans=(bottom*this.getHeight());//counting from the center, the number of pixels should represent how far above the axis  
-		}
-		return (int)ans;
+		h = this.getHeight();
+		double top = yMax/dy -.5;
+		double bottom = Math.abs(yMin/dy);
+		return (int)(top * h);	
 	}
 	
-	/**
-	 * Calculates the pixel value representation of where the y-axis(x=0) should be drawn on a scaled graph
-	 * Keep in mind that the pixels have been shifted so that the origin is a the midpoint of both height and width
-	 * @return the pixel value of the y-axis as an int
-	 */
-	public int findYAxis()
+	public int yAxis()
 	{
-		double dx = xMax-xMin;
-		double ans;
-		double scl = this.getWidth()/dx;//pixels per x
-		double right = (xMax)/dx;//calculates the portion of the screen to the right of the y-axis
-		//if the y-axis is not included in the window, the function will return -1 
-		if (xMin>0 || xMax<0)
-		{
-			ans=-1;
-		}
-		else
-		{
-			ans=(right*this.getWidth());
-		}
-		//System.out.println(scl);
-		//System.out.println(ans);
-		return (int)ans;
+		w = this.getWidth();
+		double right = xMax/dx;
+		double left = Math.abs(xMin/dx);
+		System.out.println("w: " +w);
+		System.out.println("0: " +(int)(right * w));
+		return (int)(right * w);
 	}
+	
 }
 
